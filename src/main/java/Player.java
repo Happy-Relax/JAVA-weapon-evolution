@@ -24,7 +24,7 @@ public class Player {
             this.blood = this.blood - loseBlood;
             this.printer.println(attacker.getname() + "攻击了"+this.getname()+","+this.getname()+"受到了"+loseBlood+"点伤害,"+this.getname()+"剩余生命："+this.getBlood()+".");
             if (this.blood <= 0) {
-                this.printer.println(this.name + "被打败了.");
+                this.printer.println(this.name + "被击败了.");
             }
         }
 

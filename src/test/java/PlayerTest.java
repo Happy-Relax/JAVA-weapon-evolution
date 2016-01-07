@@ -57,7 +57,7 @@ public class PlayerTest {
         Player playerJerry=new Player("Jerry",100,10,1, fakedOut);
 
         playerTom.attackedBy(playerJerry);
-        verify(fakedOut).println("Tom被打败了.");
+//        verify(fakedOut).println("Tom被打败了.");
         InOrder inOrder = inOrder(fakedOut);
         inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了9点伤害,Tom剩余生命：-1.");
         inOrder.verify(fakedOut).println("Tom被击败了.");
@@ -67,21 +67,19 @@ public class PlayerTest {
     public void should_attackedby_print_name_loseblood_and_print_loser_when_one_of_player_blood_become_zero(){
 
         Player playerTom=new Player("Tom", 20, 9, 0, fakedOut);
-        Player playerJerry=new Player("Jerry",1,8,0, fakedOut);
+        Player playerJerry=new Player("Jerry",10,8,0, fakedOut);
 
-//        playerTom.attackedBy(playerJerry);
-//        playerJerry.attackedBy(playerTom);
-//        playerTom.attackedBy(playerJerry);
+        playerTom.attackedBy(playerJerry);
         playerJerry.attackedBy(playerTom);
-//        playerTom.attackedBy(playerJerry);
-
+        playerTom.attackedBy(playerJerry);
+        playerJerry.attackedBy(playerTom);
 
         InOrder inOrder = inOrder(fakedOut);
-//        inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：12.");
-//        inOrder.verify(fakedOut).println("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：1.");
-//        inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：4.");
+        inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：12.");
+        inOrder.verify(fakedOut).println("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：1.");
+        inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：4.");
         inOrder.verify(fakedOut).println("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：-8.");
-//        inOrder.verify(fakedOut).println("Jerry被击败了.");
+        inOrder.verify(fakedOut).println("Jerry被击败了.");
     }
 
 }
