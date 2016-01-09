@@ -1,13 +1,11 @@
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 
 import java.io.PrintStream;
 
 import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -31,15 +29,8 @@ public class PlayerTest {
         Player playerTom=new Player(name,blood,attackForce);
         Player playerJerry=new Player("Jerry",100,10);
         playerTom.attackedBy(playerJerry);
-        assertThat(playerTom.getBlood(),is(90));
+        assertThat(playerTom.getHealthPoint(),is(90));
     }
-//    @Test
-//    public void should_attackedby_not_lose_blood_when_attacker_attackForce_less_than_attackeder(){
-//        Player playerTom=new Player("Tom", 100, 20, fakedOut);
-//        Player playerJerry=new Player("Jerry",100,10, fakedOut);
-//        playerTom.attackedBy(playerJerry);
-//        assertThat(playerTom.getBlood(),is(100));
-//    }
     @Test
     public void should_attackedby_return_name_loseblood_blood(){
         Player playerTom=new Player("Tom", 8, 20);

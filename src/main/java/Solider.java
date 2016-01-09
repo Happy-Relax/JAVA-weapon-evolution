@@ -16,8 +16,8 @@ public class Solider extends Player{
     public String attackedBy(Player attacker) {
 
         int loseBlood = attacker.attackOut()-this.getArmor().getDefensivePower();
-        this.setBlood(this.getBlood() - loseBlood);
-        return (attacker.getProfession()+attacker.getName() +attacker.attackWith()+getProfession()+ this.getName() + "," + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getBlood() + ".");
+        this.setHealthPoint(this.getHealthPoint() - loseBlood);
+        return (attacker.getProfession()+attacker.getName() +attacker.attackWith()+getProfession()+ this.getName() + "," + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
 
 
     }

@@ -1,31 +1,29 @@
-import java.io.PrintStream;
-
 /**
  * Created by liujia on 1/7/16.
  */
 public class Player {
     private  String name;
-    private int blood;
+    private int healthPoint;
     private  int attackForce;
     private String profession="普通人";
 
-    public Player(String name, int blood, int attackForce) {
+    public Player(String name, int healthPoint, int attackForce) {
         this.name=name;
-        this.blood=blood;
+        this.healthPoint = healthPoint;
         this.attackForce=attackForce;
     }
 
     public String attackedBy(Player attacker) {
 
             int loseBlood=attacker.attackOut();
-            this.blood = this.blood - loseBlood;
-            return (attacker.getProfession()+attacker.getName()+attacker.attackWith()+this.getProfession()+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getBlood()+".");
+            this.healthPoint = this.healthPoint - loseBlood;
+            return (attacker.getProfession()+attacker.getName()+attacker.attackWith()+this.getProfession()+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getHealthPoint()+".");
 
 
     }
 
-    public int getBlood() {
-        return blood;
+    public int getHealthPoint() {
+        return healthPoint;
     }
 
     public String getName() {
@@ -40,8 +38,8 @@ public class Player {
         return attackForce;
     }
 
-    public void setBlood(int blood) {
-        this.blood=blood;
+    public void setHealthPoint(int healthPoint) {
+        this.healthPoint = healthPoint;
     }
 
 

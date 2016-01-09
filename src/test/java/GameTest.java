@@ -30,8 +30,8 @@ public class GameTest {
         attacker=mock(Player.class);
 
         when(reactor.attackedBy(attacker)).thenReturn("Jerry攻击了Tom,Tom受到了10点伤害,Tom剩余生命：-2.");
-        when(reactor.getBlood()).thenReturn(8).thenReturn(-2);
-        when(attacker.getBlood()).thenReturn(100);
+        when(reactor.getHealthPoint()).thenReturn(8).thenReturn(-2);
+        when(attacker.getHealthPoint()).thenReturn(100);
         when(reactor.getName()).thenReturn("Tom");
         when(attacker.getName()).thenReturn("Jerry");
 
@@ -54,8 +54,8 @@ public class GameTest {
 
         when(playerTom.attackedBy(playerJerry)).thenReturn("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：12.").thenReturn("Jerry攻击了Tom,Tom受到了8点伤害,Tom剩余生命：4.");
         when(playerJerry.attackedBy(playerTom)).thenReturn("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：1.").thenReturn("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：-8.");
-        when(playerJerry.getBlood()).thenReturn(10).thenReturn(1).thenReturn(-8);
-        when(playerTom.getBlood()).thenReturn(20).thenReturn(12).thenReturn(4);
+        when(playerJerry.getHealthPoint()).thenReturn(10).thenReturn(1).thenReturn(-8);
+        when(playerTom.getHealthPoint()).thenReturn(20).thenReturn(12).thenReturn(4);
         when(playerJerry.getName()).thenReturn("Jerry");
         when(playerTom.getName()).thenReturn("Tom");
 
@@ -82,7 +82,7 @@ public class GameTest {
 
         when(playerJerry.getName()).thenReturn("Jerry");
         when(playerTom.getName()).thenReturn("Tom");
-        when(playerJerry.getBlood()).thenReturn(0);
+        when(playerJerry.getHealthPoint()).thenReturn(0);
         Game game=new Game(fakedOut);
         game.attackEachOther(playerJerry,playerTom);
 
@@ -102,8 +102,8 @@ public class GameTest {
         when(playerJerry.getName()).thenReturn("Jerry");
         when(playerTom.getName()).thenReturn("Tom");
 
-        when(playerJerry.getBlood()).thenReturn(10);
-        when(playerTom.getBlood()).thenReturn(0);
+        when(playerJerry.getHealthPoint()).thenReturn(10);
+        when(playerTom.getHealthPoint()).thenReturn(0);
 
         when(playerTom.attackedBy(playerJerry)).thenReturn("first_attack_print");
 
@@ -127,8 +127,8 @@ public class GameTest {
         when(playerJerry.getName()).thenReturn("Jerry");
         when(playerTom.getName()).thenReturn("Tom");
 
-        when(playerJerry.getBlood()).thenReturn(10,0);
-        when(playerTom.getBlood()).thenReturn(10);
+        when(playerJerry.getHealthPoint()).thenReturn(10,0);
+        when(playerTom.getHealthPoint()).thenReturn(10);
 
         when(playerTom.attackedBy(playerJerry)).thenReturn("first_attack_print");
         when(playerJerry.attackedBy(playerTom)).thenReturn("second_attack_print");

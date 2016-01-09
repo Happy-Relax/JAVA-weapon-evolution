@@ -12,13 +12,13 @@ public class Game {
     public String attackEachOther(Player attacker, Player reactor) {
         while(true) {
 
-            if (attacker.getBlood() <= 0) {
+            if (attacker.getHealthPoint() <= 0) {
                 this.printer.println(attacker.getName() + "被击败了.");
                 return "GameOver";
             }
             this.printer.println(reactor.attackedBy(attacker));
 
-            if (reactor.getBlood() <= 0) {
+            if (reactor.getHealthPoint() <= 0) {
                 this.printer.println(reactor.getName() + "被击败了.");
                 return "GameOver";
             }
