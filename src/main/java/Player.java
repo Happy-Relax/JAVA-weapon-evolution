@@ -17,10 +17,9 @@ public class Player {
 
     public String attackedBy(Player attacker) {
 
-            int loseBlood=attacker.attackForce;
+            int loseBlood=attacker.attackOut();
             this.blood = this.blood - loseBlood;
-            System.out.printf(attacker.getName() + "攻击了"+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getBlood()+".");
-            return (attacker.getName() + "攻击了"+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getBlood()+".");
+            return (attacker.getProfession()+attacker.getName()+attacker.attackWith()+this.getProfession()+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getBlood()+".");
 
 
     }
@@ -46,7 +45,11 @@ public class Player {
     }
 
 
-    public Weapon getWeapon() {
-        return null;
+    public String attackWith() {
+        return "攻击了";
+    }
+
+    public int attackOut() {
+        return attackForce;
     }
 }

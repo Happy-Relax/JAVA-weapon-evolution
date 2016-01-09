@@ -45,7 +45,7 @@ public class PlayerTest {
         Player playerTom=new Player("Tom", 8, 20);
         Player playerJerry=new Player("Jerry",100,10);
 
-        assertThat(playerTom.attackedBy(playerJerry),is("Jerry攻击了Tom,Tom受到了10点伤害,Tom剩余生命：-2."));
+        assertThat(playerTom.attackedBy(playerJerry),is("普通人Jerry攻击了普通人Tom,Tom受到了10点伤害,Tom剩余生命：-2."));
 
 
     }
