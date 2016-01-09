@@ -1,17 +1,10 @@
 /**
  * Created by liujia on 1/8/16.
  */
-public class Weapon {
-    private final String weaponName;
-    private final int attackForce;
-    private int attackerForce;
+public abstract class Weapon {
+    protected String weaponName;
+    protected   int attackForce;
 
-    public Weapon(String weaponName, int attackForce) {
-        this.weaponName=weaponName;
-        this.attackForce=attackForce;
-    }
-
-    public int getAttackerForce() {
-        return attackerForce;
-    }
+    public abstract int getAttackerForce();
+    public abstract String getWeaponName();
 }

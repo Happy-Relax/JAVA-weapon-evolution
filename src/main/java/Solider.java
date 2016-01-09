@@ -5,28 +5,21 @@ import java.io.PrintStream;
  */
 public class Solider extends Player{
     private final Weapon weapon;
-    private final Amor amor;
+    private final Armor armor;
     private String profession;
 
-    public Solider(String name, int blood, int attackForce, PrintStream fakedOut, Weapon weapon, Amor amor) {
+    public Solider(String name, int blood, int attackForce, PrintStream fakedOut, Weapon weapon, Armor armor) {
         super(name,blood,attackForce);
         this.weapon=weapon;
-        this.amor=amor;
+        this.armor = armor;
         this.profession="战士";
     }
 
     public String attackedBy(Player attacker) {
-        int loseBlood = 0;
-        if(attacker.getProfession()=="普通人"){
-            loseBlood = attacker.getAttackForce() - this.getAmor().getdefensivePower();
-        }
-        else{
-            if (attacker.getWeapon()!=null) {
-                loseBlood = attacker.getAttackForce() - attacker.getWeapon().getAttackerForce() - this.getAmor().getdefensivePower();
-            }
-        }
+
+        int loseBlood = attacker.getAttackForce()-this.getArmor().getDefensivePower();
         this.setBlood(this.getBlood() - loseBlood);
-        return (attacker.getName() + "攻击了战士" + this.getName() + "," + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getBlood() + ".");
+        return (attacker.getProfession()+attacker.getName() + "攻击了" +getProfession()+ this.getName() + "," + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getBlood() + ".");
 
 
     }
@@ -37,7 +30,7 @@ public class Solider extends Player{
         return profession;
     }
 
-    public Amor getAmor() {
-        return amor;
+    public Armor getArmor() {
+        return armor;
     }
 }

@@ -25,22 +25,26 @@ public class SoliderTest {
         int attackForce=8;
 
         String weaponName="优质木棒";
-        Weapon weapon=new Weapon(weaponName,attackForce);
+        Weapon weapon=new WeaponFactory().createWeapon(weaponName,attackForce);
         String amorName="布甲";
         int defensivePower=3;
-        Amor amor=new Amor(amorName,defensivePower);
-        Solider solider=new Solider(name,blood,attackForce,fakedOut,weapon,amor);
+        Armor armor =new AmorFactory().createArmor(amorName,defensivePower);
+        Solider solider=new Solider(name,blood,attackForce,fakedOut,weapon, armor);
         assertThat(solider.getProfession(),is("战士"));
 
     }
-//    @Test
-//    public void should_solider_attackedBy_player_print_profession_weaponName_loseblood_and_blood_when_solider_have_amor(){
-//
-//        Weapon weapon=new Weapon("优质木棒", 2);
-//        Amor amor=new Amor("布甲", 3);
-//        Solider tom=new Solider("Tom", 20, 8,fakedOut,weapon,amor);
-//        Player jerry=new Player("Jerry",20,8,fakedOut);
-//        tom.attackedBy(jerry);
-//        verify(fakedOut).println("普通人Jerry攻击了战士Tom,Tom受到了5点伤害,Tom剩余生命：15.");
-//    }
+    @Test
+    public void should_solider_without_amor_attackedBy_player_print_profession_weaponName_loseblood_and_blood(){
+
+        Solider tom=new Solider("Tom", 20, 8,fakedOut,new WeaponFactory().createWeapon(),new AmorFactory().createArmor());
+        Player jerry=new Player("Jerry",20,8);
+        assertThat(tom.attackedBy(jerry),is("普通人Jerry攻击了战士Tom,Tom受到了8点伤害,Tom剩余生命：12."));
+    }
+    @Test
+    public void should_solider_with_amor_attackedBy_player_print_profession_weaponName_loseblood_and_blood(){
+
+        Solider tom=new Solider("Tom", 20, 8,fakedOut,new WeaponFactory().createWeapon(),new AmorFactory().createArmor());
+        Player jerry=new Player("Jerry",20,8);
+        assertThat(tom.attackedBy(jerry),is("普通人Jerry攻击了战士Tom,Tom受到了8点伤害,Tom剩余生命：12."));
+    }
 }

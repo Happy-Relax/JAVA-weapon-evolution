@@ -70,4 +70,76 @@ public class GameTest {
         inOrder.verify(fakedOut).println("Tom攻击了Jerry,Jerry受到了9点伤害,Jerry剩余生命：-8.");
         inOrder.verify(fakedOut).println("Jerry被击败了.");
     }
+
+    @Test
+    public void should_return_in_first_if_and_print_loser(){
+
+        Player playerTom=new Player("Tom", 20, 9);
+        Player playerJerry=new Player("Jerry",10,8);
+
+        playerJerry=mock(Player.class);
+        playerTom=mock(Player.class);
+
+        when(playerJerry.getName()).thenReturn("Jerry");
+        when(playerTom.getName()).thenReturn("Tom");
+        when(playerJerry.getBlood()).thenReturn(0);
+        Game game=new Game(fakedOut);
+        game.attackEachOther(playerJerry,playerTom);
+
+
+        InOrder inOrder = inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("Jerry被击败了.");
+    }
+    @Test
+    public void should_return_in_second_if_and_print_loser(){
+
+        Player playerTom=new Player("Tom", 20, 9);
+        Player playerJerry=new Player("Jerry",10,8);
+
+        playerJerry=mock(Player.class);
+        playerTom=mock(Player.class);
+
+        when(playerJerry.getName()).thenReturn("Jerry");
+        when(playerTom.getName()).thenReturn("Tom");
+
+        when(playerJerry.getBlood()).thenReturn(10);
+        when(playerTom.getBlood()).thenReturn(0);
+
+        when(playerTom.attackedBy(playerJerry)).thenReturn("first_attack_print");
+
+        Game game=new Game(fakedOut);
+        game.attackEachOther(playerJerry,playerTom);
+
+
+        InOrder inOrder = inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("first_attack_print");
+        inOrder.verify(fakedOut).println("Tom被击败了.");
+    }
+    @Test
+    public void should_return_in_third_if_and_print_loser(){
+
+        Player playerTom=new Player("Tom", 20, 9);
+        Player playerJerry=new Player("Jerry",10,8);
+
+        playerJerry=mock(Player.class);
+        playerTom=mock(Player.class);
+
+        when(playerJerry.getName()).thenReturn("Jerry");
+        when(playerTom.getName()).thenReturn("Tom");
+
+        when(playerJerry.getBlood()).thenReturn(10,0);
+        when(playerTom.getBlood()).thenReturn(10);
+
+        when(playerTom.attackedBy(playerJerry)).thenReturn("first_attack_print");
+        when(playerJerry.attackedBy(playerTom)).thenReturn("second_attack_print");
+
+        Game game=new Game(fakedOut);
+        game.attackEachOther(playerJerry,playerTom);
+
+        InOrder inOrder = inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("first_attack_print");
+        inOrder.verify(fakedOut).println("second_attack_print");
+        inOrder.verify(fakedOut).println("Jerry被击败了.");
+    }
+
 }
