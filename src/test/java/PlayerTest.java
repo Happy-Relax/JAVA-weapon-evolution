@@ -42,16 +42,51 @@ public class PlayerTest {
     }
 
 
-
     @Test
     public void should_profession_is_people(){
-
         Player playerTom=new Player("Tom", 20, 9);
-
         assertThat(playerTom.getProfession(),is("普通人"));
-
     }
 
+
+    @Test
+    public void should_return_null_when_reactor_has_no_deBuff(){
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
+        Armor nullArmor=new AmorFactory().createArmor();
+        Solider tom=new Solider("Tom",20,2,swort,nullArmor);
+        Player jerry=new Player("Jerry",20,2);
+
+        assertThat(jerry.sufferDeBuff(),is(""));
+    }
+    @Test
+    public void should_delete_deBuff_when_reactor_has_a_deBuff(){
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
+        Armor nullArmor=new AmorFactory().createArmor();
+        Solider tom=new Solider("Tom",20,2,swort,nullArmor);
+        Player jerry=new Player("Jerry",20,2);
+        jerry.attackedBy(tom);
+        jerry.sufferDeBuff();
+
+        assertThat(jerry.sufferDeBuff(),is(""));
+    }
+    @Test
+    public void should_return_poison_delayDeBuff_message_this_deBuff_when_reactor_has_a_deBuff(){
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
+        Armor nullArmor=new AmorFactory().createArmor();
+        Solider tom=new Solider("Tom",20,2,swort,nullArmor);
+        Player jerry=new Player("Jerry",20,2);
+        jerry.attackedBy(tom);
+        assertThat(jerry.sufferDeBuff(),is("Jerry受到2点毒性伤害,Jerry剩余生命:14"));
+    }
+    @Test
+    public void should_return_frost_delayDeBuff_message_this_deBuff_when_reactor_has_a_deBuff(){
+        Weapon swort=new WeaponFactory().createWeapon("寒冰剑",2,new BuffFactory().createBuff("frost",2));
+        Armor nullArmor=new AmorFactory().createArmor();
+        Solider tom=new Solider("Tom",20,2,swort,nullArmor);
+        Player jerry=new Player("Jerry",20,2);
+        jerry.attackedBy(tom);
+        assertThat(jerry.sufferDeBuff(),is("Jerry冻的直哆嗦,没有击中"));
+    }
 
 
 }

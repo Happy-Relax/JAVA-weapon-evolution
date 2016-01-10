@@ -6,7 +6,7 @@ public class Player {
     private int healthPoint;
     private  int attackForce;
     private String profession="普通人";
-    protected Buff deBuff;
+    protected Buff deBuff=new BuffFactory().createBuff();
 
     public Player(String name, int healthPoint, int attackForce) {
         this.name=name;
@@ -71,4 +71,20 @@ public class Player {
         }
 
     }
+
+
+    public String sufferDeBuff() {
+        String deBuffMessage="";
+        if(("DelayBuff").equals(this.deBuff.getClass().getName())){
+            deBuffMessage+=this.name+this.deBuff.getDelayDamageMessage();
+            if(this.deBuff.getDelayDamagePoint()!=0){
+                this.healthPoint=this.healthPoint-this.deBuff.getDelayDamagePoint();
+                deBuffMessage+=","+this.name+"剩余生命:"+this.healthPoint;
+            }
+        }
+
+        this.deBuff=new BuffFactory().createBuff();
+        return deBuffMessage ;
+    }
+
 }

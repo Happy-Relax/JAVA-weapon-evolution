@@ -86,12 +86,12 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_poisonBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("poison",2));
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Solider jerry=new Solider("Jerry",20,2,nullWeapon,nullArmor);
-        assertThat(jerry.attackedBy(tom),is("战士Tom用冰剑攻击了战士Jerry,Jerry受到了4点伤害,Jerry中毒了,Jerry剩余生命：16."));
+        assertThat(jerry.attackedBy(tom),is("战士Tom用毒剑攻击了战士Jerry,Jerry受到了4点伤害,Jerry中毒了,Jerry剩余生命：16."));
     }
 
     //frostBuff

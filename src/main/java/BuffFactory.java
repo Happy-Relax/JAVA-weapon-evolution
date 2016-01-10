@@ -5,8 +5,8 @@ public class BuffFactory {
     public Buff createBuff(String poison,int damagePoint) {
 
         switch (poison){
-            case "poison":return new DelayBuff("中毒了","点毒性伤害",damagePoint);
-            case "burn":  return new DelayBuff("着火了","点火焰伤害",damagePoint);
+            case "poison":return new DelayBuff("中毒了","受到"+damagePoint+"点毒性伤害",damagePoint);
+            case "burn":  return new DelayBuff("着火了","受到"+damagePoint+"点火焰伤害",damagePoint);
             case "frost":  return new DelayBuff("冻僵了","冻的直哆嗦,没有击中",0);
             case "dizziness":  return new DelayBuff("冻僵了","冻的直哆嗦,没有击中",0);
             case "critial":  return new InstantBuff(3);
