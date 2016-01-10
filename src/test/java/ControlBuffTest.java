@@ -6,8 +6,8 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by liujia on 1/10/16.
  */
-public class DizzinessBuffTest {
-    Buff dizziness=new BuffFactory().createBuff("dizziness");
+public class ControlBuffTest {
+    Buff dizziness=new BuffFactory().createBuff("dizziness",0);
     @Test
     public void should_getCritialRate_return_1_when_not_a_critial_buff(){
 

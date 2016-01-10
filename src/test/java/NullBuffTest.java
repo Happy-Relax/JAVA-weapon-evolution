@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
  * Created by liujia on 1/10/16.
  */
 public class NullBuffTest {
-    Buff lull=new BuffFactory().createBuff("null");
+    Buff lull=new BuffFactory().createBuff();
     @Test
     public void should_getCritialRate_return_3_when_is_a_critial_buff(){
 

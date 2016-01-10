@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
  * Created by liujia on 1/9/16.
  */
 public class BurnBuffTest {
-    Buff burn=new BuffFactory().createBuff("burn");
+    Buff burn=new BuffFactory().createBuff("burn",2);
     @Test
     public void should_getCritialRate_return_1_when_not_a_critial_buff(){
 

@@ -15,6 +15,6 @@ public class NullWeapon extends Weapon{
 
     @Override
     public Buff getBuff() {
-        return new BuffFactory().createBuff("");
+        return new BuffFactory().createBuff();
     }
 }

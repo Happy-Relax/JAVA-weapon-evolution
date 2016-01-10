@@ -6,8 +6,8 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by liujia on 1/10/16.
  */
-public class CritialBuffTest {
-    Buff critial=new BuffFactory().createBuff("critial");
+public class InstantBuffTest {
+    Buff critial=new BuffFactory().createBuff("critial",3);
     @Test
     public void should_getCritialRate_return_3_when_is_a_critial_buff(){
 

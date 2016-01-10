@@ -10,7 +10,7 @@ public class BuffTest {
     //without buff
     @Test
     public void should_solider_without_Buff_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff(""));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff());
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -18,7 +18,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_without_Buff_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff(""));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff());
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
@@ -27,7 +27,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_without_Buff_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff(""));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff());
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
         Solider tom=new Solider("Tom",20,2,swort,cloth);
@@ -38,7 +38,7 @@ public class BuffTest {
     //critialBuff
     @Test
     public void should_solider_with_critialBuffWeapon_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial"));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial",2));
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -46,7 +46,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_critialBuffWeapon_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial"));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -56,7 +56,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_critialBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial"));
+        Weapon swort=new WeaponFactory().createWeapon("利剑",2,new BuffFactory().createBuff("critial",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -68,7 +68,7 @@ public class BuffTest {
     //poisonBuff
     @Test
     public void should_solider_with_poisonBuffWeapon_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison"));
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -76,7 +76,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_poisonBuffWeapon_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison"));
+        Weapon swort=new WeaponFactory().createWeapon("毒剑",2,new BuffFactory().createBuff("poison",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -86,7 +86,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_poisonBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("poison"));
+        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("poison",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
@@ -97,7 +97,7 @@ public class BuffTest {
     //frostBuff
     @Test
     public void should_solider_with_frostBuffWeapon_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost"));
+        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost",2));
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -105,7 +105,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_frostBuffWeapon_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost"));
+        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -115,7 +115,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_frostBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost"));
+        Weapon swort=new WeaponFactory().createWeapon("冰剑",2,new BuffFactory().createBuff("frost",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
@@ -126,7 +126,7 @@ public class BuffTest {
     //burnBuff
     @Test
     public void should_solider_with_burnBuffWeapon_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn"));
+        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn",2));
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -134,7 +134,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_burnBuffWeapon_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn"));
+        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -144,7 +144,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_burnBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn"));
+        Weapon swort=new WeaponFactory().createWeapon("火焰剑",2,new BuffFactory().createBuff("burn",2));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
@@ -152,10 +152,10 @@ public class BuffTest {
         assertThat(jerry.attackedBy(tom),is("战士Tom用火焰剑攻击了战士Jerry,Jerry受到了4点伤害,Jerry着火了,Jerry剩余生命：16."));
     }
 
-    //DizzinessBuff
+    //ControlBuff
     @Test
     public void should_solider_with_dizzinessBuffWeapon_attack_player_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness"));
+        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness",0));
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);
         Player jerry=new Player("Jerry",20,2);
@@ -163,7 +163,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_dizzinessBuffWeapon_attack_solider_with_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness"));
+        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness",0));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Armor cloth=new AmorFactory().createArmor("cloth",2);
@@ -173,7 +173,7 @@ public class BuffTest {
     }
     @Test
     public void should_solider_with_dizzinessBuffWeapon_attack_solider_without_armor_return_buff_message(){
-        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness"));
+        Weapon swort=new WeaponFactory().createWeapon("眩晕剑",2,new BuffFactory().createBuff("dizziness",0));
         Weapon nullWeapon=new WeaponFactory().createWeapon();
         Armor nullArmor=new AmorFactory().createArmor();
         Solider tom=new Solider("Tom",20,2,swort,nullArmor);

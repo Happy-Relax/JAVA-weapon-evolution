@@ -10,11 +10,11 @@ public class RealWeaponTest{
 
     @Test
     public void should_getName_is_name(){
-        assertThat(new RealWeapon("sword",0,new BuffFactory().createBuff("")).getWeaponName(),is("sword"));
+        assertThat(new RealWeapon("sword",0,new BuffFactory().createBuff()).getWeaponName(),is("sword"));
     }
     @Test
     public void should_getAtteckForce_is_atteckForce(){
-        assertThat(new RealWeapon("sword",1,new BuffFactory().createBuff("")).getAttackerForce(),is(1));
+        assertThat(new RealWeapon("sword",1,new BuffFactory().createBuff()).getAttackerForce(),is(1));
     }
 
 }

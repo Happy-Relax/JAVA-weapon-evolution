@@ -1,7 +1,11 @@
 /**
  * Created by liujia on 1/10/16.
  */
-public class CritialBuff extends Buff {
+public class InstantBuff extends Buff {
+    public InstantBuff(int critialRate){
+        this.critialRate=critialRate;
+    }
+
     @Override
     public String getInstantDamageMessage() {
         return "发动了全力一击,";
@@ -24,6 +28,6 @@ public class CritialBuff extends Buff {
 
     @Override
     public Integer getCritialRate() {
-        return 3;
+        return this.critialRate;
     }
 }

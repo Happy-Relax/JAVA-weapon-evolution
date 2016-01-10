@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
  * Created by liujia on 1/9/16.
  */
 public class FrostBuffTest {
-    Buff frost=new BuffFactory().createBuff("frost");
+    Buff frost=new BuffFactory().createBuff("frost",0);
     @Test
     public void should_getCritialRate_return_1_when_not_a_critial_buff(){
 
@@ -28,7 +28,7 @@ public class FrostBuffTest {
     }
     @Test
     public void should_getDelayDamageMessage_return_what_kind_of_damage(){
-        assertThat(frost.getDelayDamageMessage(),is("冻的直哆嗦，没有击中"));
+        assertThat(frost.getDelayDamageMessage(),is("冻的直哆嗦,没有击中"));
     }
 
 }

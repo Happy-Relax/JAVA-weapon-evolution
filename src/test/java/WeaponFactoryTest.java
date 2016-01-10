@@ -13,6 +13,6 @@ public class WeaponFactoryTest {
     }
     @Test
     public void should_create_a_RealWeapon_object_when_get_name_and_defensivePower(){
-        assertThat(new WeaponFactory().createWeapon("swort",1,new BuffFactory().createBuff("")).getClass().getName(),is("RealWeapon"));
+        assertThat(new WeaponFactory().createWeapon("swort",1,new BuffFactory().createBuff()).getClass().getName(),is("RealWeapon"));
     }
 }
