@@ -28,7 +28,7 @@ public class BurnBuffTest {
     }
     @Test
     public void should_getDelayDamageMessage_return_what_kind_of_damage(){
-        assertThat(burn.getDelayDamageMessage(),is("点火焰伤害"));
+        assertThat(burn.getDelayDamageMessage(),is("受到2点火焰伤害"));
     }
 
 }

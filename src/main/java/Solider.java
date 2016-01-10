@@ -18,7 +18,7 @@ public class Solider extends Player{
         int loseBlood = (attacker.attackOut()-this.getArmor().getDefensivePower())*attacker.getWeapon().getBuff().getCritialRate();
         this.setHealthPoint(this.getHealthPoint() - loseBlood);
         this.deBuff = attacker.getWeapon().getBuff();
-        return (attacker.getProfession()+attacker.getName() +attacker.attackWith()+getProfession()+ this.getName() + ","+ attacker.getInstantBuff()  + this.getName() + "受到了" + loseBlood + "点伤害," +this.getDeBuff()+this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
+        return (attacker.getProfession()+attacker.getName() +attacker.attackWith()+getProfession()+ this.getName() + ","+ attacker.getInstantBuff()  + this.getName() + "受到了" + loseBlood + "点伤害," +this.getDeBuffMessage()+this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
 
 
     }

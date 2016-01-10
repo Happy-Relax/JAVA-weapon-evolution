@@ -36,7 +36,7 @@ public class GameTest {
         when(attacker.getName()).thenReturn("Jerry");
 
         Game game=new Game(fakedOut);
-        game.attackEachOther(attacker,reactor);
+        game.attackEachOtherWithoutBuff(attacker,reactor);
 
         InOrder inOrder = inOrder(fakedOut);
         inOrder.verify(fakedOut).println("Jerry攻击了Tom,Tom受到了10点伤害,Tom剩余生命：-2.");
@@ -60,7 +60,7 @@ public class GameTest {
         when(playerTom.getName()).thenReturn("Tom");
 
         Game game=new Game(fakedOut);
-        game.attackEachOther(playerJerry,playerTom);
+        game.attackEachOtherWithoutBuff(playerJerry,playerTom);
 
 
         InOrder inOrder = inOrder(fakedOut);
@@ -84,7 +84,7 @@ public class GameTest {
         when(playerTom.getName()).thenReturn("Tom");
         when(playerJerry.getHealthPoint()).thenReturn(0);
         Game game=new Game(fakedOut);
-        game.attackEachOther(playerJerry,playerTom);
+        game.attackEachOtherWithoutBuff(playerJerry,playerTom);
 
 
         InOrder inOrder = inOrder(fakedOut);
@@ -108,7 +108,7 @@ public class GameTest {
         when(playerTom.attackedBy(playerJerry)).thenReturn("first_attack_print");
 
         Game game=new Game(fakedOut);
-        game.attackEachOther(playerJerry,playerTom);
+        game.attackEachOtherWithoutBuff(playerJerry,playerTom);
 
 
         InOrder inOrder = inOrder(fakedOut);
@@ -134,12 +134,88 @@ public class GameTest {
         when(playerJerry.attackedBy(playerTom)).thenReturn("second_attack_print");
 
         Game game=new Game(fakedOut);
-        game.attackEachOther(playerJerry,playerTom);
+        game.attackEachOtherWithoutBuff(playerJerry,playerTom);
 
         InOrder inOrder = inOrder(fakedOut);
         inOrder.verify(fakedOut).println("first_attack_print");
         inOrder.verify(fakedOut).println("second_attack_print");
         inOrder.verify(fakedOut).println("Jerry被击败了.");
     }
+
+    @Test
+    public void should_gameControlWithBuff_end_in_first_return(){
+        Solider tom=mock(Solider.class);
+        Player jerry=mock(Solider.class);
+
+        when(tom.getHealthPoint()).thenReturn(0);
+        when(tom.getName()).thenReturn("Tom");
+
+        Game game=new Game(fakedOut);
+
+        game.gameCotrolWithBuff(tom,jerry);
+
+        InOrder inOrder=inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("Tom被击败了.");
+    }
+
+    @Test
+    public void should_gameControlWithBuff_end_in_second_return_and_without_sencond_if(){
+        Solider tom=mock(Solider.class);
+        Player jerry=mock(Solider.class);
+
+        when(tom.getHealthPoint()).thenReturn(1,-1);
+        when(tom.sufferDeBuff()).thenReturn("sufferDeBuff");
+        when(tom.getName()).thenReturn("Tom");
+        when(tom.getDeBuff()).thenReturn(new BuffFactory().createBuff("poison",2));
+
+        Game game=new Game(fakedOut);
+
+        game.gameCotrolWithBuff(tom,jerry);
+
+        InOrder inOrder=inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("sufferDeBuff");
+        inOrder.verify(fakedOut).println("Tom被击败了.");
+    }
+    @Test
+    public void should_gameControlWithBuff_end_in_second_return_and_with_sencond_if(){
+        Solider tom=mock(Solider.class);
+        Player jerry=mock(Solider.class);
+
+        when(tom.getHealthPoint()).thenReturn(1,-1);
+        when(tom.sufferDeBuff()).thenReturn("sufferDeBuff");
+        when(tom.getName()).thenReturn("Tom");
+        when(tom.getDeBuff()).thenReturn(new BuffFactory().createBuff("frost",2));
+
+        when(jerry.getName()).thenReturn("Jerry");
+        Game game=new Game(fakedOut);
+
+        game.gameCotrolWithBuff(tom,jerry);
+
+        InOrder inOrder=inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("sufferDeBuffJerry");
+        inOrder.verify(fakedOut).println("Tom被击败了.");
+    }
+    @Test
+    public void should_gameControlWithBuff_end_in_last_return(){
+        Solider tom=mock(Solider.class);
+        Player jerry=mock(Solider.class);
+
+        when(tom.getHealthPoint()).thenReturn(1,1);
+        when(tom.sufferDeBuff()).thenReturn("sufferDeBuff");
+        when(tom.getName()).thenReturn("Tom");
+        when(tom.getDeBuff()).thenReturn(new BuffFactory().createBuff("poison",2));
+
+        when(jerry.getName()).thenReturn("Jerry");
+        when(jerry.attackedBy(tom)).thenReturn("reactorAttackedByAttacker");
+        Game game=new Game(fakedOut);
+
+        game.gameCotrolWithBuff(tom,jerry);
+
+        InOrder inOrder=inOrder(fakedOut);
+        inOrder.verify(fakedOut).println("sufferDeBuff");
+        inOrder.verify(fakedOut).println("reactorAttackedByAttacker");
+    }
+
+
 
 }

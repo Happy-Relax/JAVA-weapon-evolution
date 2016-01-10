@@ -4,6 +4,7 @@
 public abstract class Buff {
     protected int damagePoint;
     protected int critialRate=1;
+    protected boolean beforAttack =false;
 
     public abstract String getInstantDamageMessage();//发动了全力一击
 
@@ -14,4 +15,8 @@ public abstract class Buff {
     public abstract String getDelayDamageMessage();//冻的直哆嗦，没有击中／点毒性伤害／点火焰伤害／晕倒了，无法攻击
 
     public abstract Integer getCritialRate() ;//暴击率
+
+    public boolean getBeforAttack() {
+        return beforAttack;
+    }
 }

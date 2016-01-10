@@ -9,9 +9,10 @@ public class Game {
     public Game(PrintStream printer){
         this.printer=printer;
     }
-    public String attackEachOther(Player attacker, Player reactor) {
+    public String attackEachOtherWithoutBuff(Player attacker, Player reactor) {
         while(true) {
 
+            this.printer.println(attacker.sufferDeBuff());
             if (attacker.getHealthPoint() <= 0) {
                 this.printer.println(attacker.getName() + "被击败了.");
                 return "GameOver";
@@ -26,5 +27,42 @@ public class Game {
         }
     }
 
+    public String attackEachOtherWithBuff(Player attacker, Player reactor) {
+        while(true) {
+
+            if(this.gameCotrolWithBuff(attacker,reactor)){
+                return "GameOver";
+            }
+            if(this.gameCotrolWithBuff(reactor,attacker)){
+                return "GameOver";
+            }
+
+        }
+    }
+
+    public boolean gameCotrolWithBuff(Player attacker,Player reactor){
+        String printString="";
+
+        if (attacker.getHealthPoint() <= 0) {
+            this.printer.println(attacker.getName() + "被击败了.");
+            return true;
+        }
+        //攻击前状态判定
+        printString=attacker.sufferDeBuff();
+        if (attacker.getDeBuff().getBeforAttack()){
+            printString+=reactor.getName();
+        }
+        this.printer.println(printString);
+        //攻击
+        if (attacker.getHealthPoint() <= 0) {
+            this.printer.println(attacker.getName() + "被击败了.");
+            return true;
+        }
+        if(attacker.getDeBuff() instanceof ControlBuff){
+            return false;
+        }
+        this.printer.println(reactor.attackedBy(attacker));
+        return false;
+    }
 
 }

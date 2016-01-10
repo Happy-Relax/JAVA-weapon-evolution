@@ -31,7 +31,7 @@ public class DelayBuffTest {
     @Test
     public void should_getDelayDamageMessage_return_what_kind_of_damage(){
         Buff poison=new BuffFactory().createBuff("poison",2);
-        assertThat(poison.getDelayDamageMessage(),is("点毒性伤害"));
+        assertThat(poison.getDelayDamageMessage(),is("受到2点毒性伤害"));
     }
 }
 

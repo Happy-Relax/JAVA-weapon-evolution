@@ -19,7 +19,7 @@ public class Player {
         int loseBlood = attacker.attackOut() * attacker.getWeapon().getBuff().getCritialRate();
         this.healthPoint = this.healthPoint - loseBlood;
         this.deBuff = attacker.getWeapon().getBuff();
-        return (attacker.getProfession() + attacker.getName() + attacker.attackWith() + this.getProfession() + this.getName() + "," + attacker.getInstantBuff() + this.getName() + "受到了" + loseBlood + "点伤害," +this.getDeBuff() +this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
+        return (attacker.getProfession() + attacker.getName() + attacker.attackWith() + this.getProfession() + this.getName() + "," + attacker.getInstantBuff() + this.getName() + "受到了" + loseBlood + "点伤害," +this.getDeBuffMessage() +this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
 
 
     }
@@ -62,7 +62,7 @@ public class Player {
         return "";
     }
 
-    public String getDeBuff() {
+    public String getDeBuffMessage() {
         if (this.deBuff.getClass().getName()!="NullBuff"&&this.deBuff.getDelayDamageMessage()!=""){
             return this.getName()+deBuff.getBuffMessage()+",";
         }
@@ -75,7 +75,7 @@ public class Player {
 
     public String sufferDeBuff() {
         String deBuffMessage="";
-        if(("DelayBuff").equals(this.deBuff.getClass().getName())){
+        if((!("NullBuff").equals(this.deBuff.getClass().getName()))&&(!("InstantBuff").equals(this.deBuff.getClass().getName()))){
             deBuffMessage+=this.name+this.deBuff.getDelayDamageMessage();
             if(this.deBuff.getDelayDamagePoint()!=0){
                 this.healthPoint=this.healthPoint-this.deBuff.getDelayDamagePoint();
@@ -87,4 +87,7 @@ public class Player {
         return deBuffMessage ;
     }
 
+    public Buff getDeBuff() {
+        return deBuff;
+    }
 }
