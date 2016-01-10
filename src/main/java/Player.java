@@ -6,7 +6,7 @@ public class Player {
     private int healthPoint;
     private  int attackForce;
     private String profession="普通人";
-    private String n;
+    protected Buff deBuff;
 
     public Player(String name, int healthPoint, int attackForce) {
         this.name=name;
@@ -18,7 +18,8 @@ public class Player {
 
         int loseBlood = attacker.attackOut() * attacker.getWeapon().getBuff().getCritialRate();
         this.healthPoint = this.healthPoint - loseBlood;
-        return (attacker.getProfession() + attacker.getName() + attacker.attackWith() + this.getProfession() + this.getName() + "," + attacker.getInstantBuff() + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
+        this.deBuff = attacker.getWeapon().getBuff();
+        return (attacker.getProfession() + attacker.getName() + attacker.attackWith() + this.getProfession() + this.getName() + "," + attacker.getInstantBuff() + this.getName() + "受到了" + loseBlood + "点伤害," +this.getDeBuff() +this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
 
 
     }
@@ -59,5 +60,15 @@ public class Player {
 
     public String getInstantBuff() {
         return "";
+    }
+
+    public String getDeBuff() {
+        if (this.deBuff.getClass().getName()!="NullBuff"&&this.deBuff.getDelayDamageMessage()!=""){
+            return this.getName()+deBuff.getBuffMessage()+",";
+        }
+        else {
+            return "";
+        }
+
     }
 }

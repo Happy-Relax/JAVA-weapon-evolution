@@ -16,7 +16,7 @@ public class CritialBuffTest {
     @Test
     public void should_getInstantDamageMessage_return_message_when_is_a_Instant_buff(){
 
-        assertThat(critial.getInstantDamageMessage(),is("发动了全力一击，"));
+        assertThat(critial.getInstantDamageMessage(),is("发动了全力一击,"));
     }
     @Test
     public void should_getBuffMessage_return_what_kind_of_buff(){

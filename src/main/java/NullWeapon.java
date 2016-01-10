@@ -12,4 +12,9 @@ public class NullWeapon extends Weapon{
     public String getWeaponName() {
         return "";
     }
+
+    @Override
+    public Buff getBuff() {
+        return new BuffFactory().createBuff("");
+    }
 }

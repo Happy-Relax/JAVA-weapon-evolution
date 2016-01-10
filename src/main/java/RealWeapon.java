@@ -17,4 +17,11 @@ public class RealWeapon extends Weapon{
     public String getWeaponName() {
         return this.weaponName;
     }
+
+    @Override
+    public Buff getBuff() {
+        return this.buff;
+    }
+
+
 }

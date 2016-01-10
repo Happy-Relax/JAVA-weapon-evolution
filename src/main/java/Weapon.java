@@ -9,7 +9,5 @@ public abstract class Weapon {
     public abstract int getAttackerForce();
     public abstract String getWeaponName();
 
-    public Buff getBuff() {
-        return buff;
-    }
+    public abstract Buff getBuff();
 }
