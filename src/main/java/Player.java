@@ -6,6 +6,7 @@ public class Player {
     private int healthPoint;
     private  int attackForce;
     private String profession="普通人";
+    private String n;
 
     public Player(String name, int healthPoint, int attackForce) {
         this.name=name;
@@ -15,9 +16,9 @@ public class Player {
 
     public String attackedBy(Player attacker) {
 
-            int loseBlood=attacker.attackOut();
-            this.healthPoint = this.healthPoint - loseBlood;
-            return (attacker.getProfession()+attacker.getName()+attacker.attackWith()+this.getProfession()+this.getName()+","+this.getName()+"受到了"+loseBlood+"点伤害,"+this.getName()+"剩余生命："+this.getHealthPoint()+".");
+        int loseBlood = attacker.attackOut() * attacker.getWeapon().getBuff().getCritialRate();
+        this.healthPoint = this.healthPoint - loseBlood;
+        return (attacker.getProfession() + attacker.getName() + attacker.attackWith() + this.getProfession() + this.getName() + "," + attacker.getInstantBuff() + this.getName() + "受到了" + loseBlood + "点伤害," + this.getName() + "剩余生命：" + this.getHealthPoint() + ".");
 
 
     }
@@ -49,5 +50,14 @@ public class Player {
 
     public int attackOut() {
         return attackForce;
+    }
+
+
+    public Weapon getWeapon() {
+        return new WeaponFactory().createWeapon();
+    }
+
+    public String getInstantBuff() {
+        return "";
     }
 }

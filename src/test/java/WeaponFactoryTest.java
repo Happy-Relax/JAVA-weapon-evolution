@@ -12,7 +12,7 @@ public class WeaponFactoryTest {
         assertThat(new WeaponFactory().createWeapon().getClass().getName(),is("NullWeapon"));
     }
     @Test
-    public void should_create_a_NullWeapon_object_when_get_name_and_defensivePower(){
-        assertThat(new WeaponFactory().createWeapon("swort",1).getClass().getName(),is("RealWeapon"));
+    public void should_create_a_RealWeapon_object_when_get_name_and_defensivePower(){
+        assertThat(new WeaponFactory().createWeapon("swort",1,new BuffFactory().createBuff("")).getClass().getName(),is("RealWeapon"));
     }
 }

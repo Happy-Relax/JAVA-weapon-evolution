@@ -6,7 +6,7 @@ public class WeaponFactory {
         return new NullWeapon();
     }
 
-    public Weapon createWeapon(String weaponName, int attackForce) {
-        return new RealWeapon(weaponName,attackForce);
+    public Weapon createWeapon(String weaponName, int attackForce,Buff buff) {
+        return new RealWeapon(weaponName,attackForce,buff);
     }
 }

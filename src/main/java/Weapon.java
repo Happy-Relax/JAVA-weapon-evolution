@@ -4,7 +4,12 @@
 public abstract class Weapon {
     protected String weaponName;
     protected   int attackForce;
+    protected Buff buff;
 
     public abstract int getAttackerForce();
     public abstract String getWeaponName();
+
+    public Buff getBuff() {
+        return buff;
+    }
 }

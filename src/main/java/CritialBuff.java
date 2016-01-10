@@ -4,7 +4,7 @@
 public class CritialBuff extends Buff {
     @Override
     public String getInstantDamageMessage() {
-        return "发动了全力一击，";
+        return "发动了全力一击,";
     }
 
     @Override

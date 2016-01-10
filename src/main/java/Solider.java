@@ -41,4 +41,17 @@ public class Solider extends Player{
 
     public int attackOut(){return this.getAttackForce()+this.weapon.getAttackerForce();}
 
+    public Weapon getWeapon(){
+        return this.weapon;
+    }
+
+    public String getInstantBuff(){
+        if(this.getWeapon().getBuff().getInstantDamageMessage()!=""){
+            return this.getName()+this.getWeapon().getBuff().getInstantDamageMessage();
+        }
+        else {
+            return "";
+        }
+    }
+
 }
