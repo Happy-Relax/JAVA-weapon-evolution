@@ -215,6 +215,24 @@ public class GameTest {
         inOrder.verify(fakedOut).println("sufferDeBuff");
         inOrder.verify(fakedOut).println("reactorAttackedByAttacker");
     }
+    @Test
+    public void should_attackEachOtherWithBuff_end_in_first_return(){
+        Solider tom=mock(Solider.class);
+        Player jerry=mock(Solider.class);
+
+        when(tom.getHealthPoint()).thenReturn(1,-1);
+        when(tom.sufferDeBuff()).thenReturn("sufferDeBuff");
+        when(tom.getName()).thenReturn("Tom");
+        when(tom.getDeBuff()).thenReturn(new BuffFactory().createBuff("frost",2));
+
+        when(jerry.getName()).thenReturn("Jerry");
+        Game game=new Game(fakedOut);
+
+        game.gameCotrolWithBuff(tom,jerry);
+
+    }
+
+
 
 
 
